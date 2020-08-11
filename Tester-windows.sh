@@ -1,7 +1,8 @@
-for jar in `ls [bg]*.jar `
+for jar in `ls ./lib/[bg]*.jar `
 do
     printf "_________ $jar _________\n\n"
-    javac -d "./build" -cp "./hamcrest-core-1.3.jar;./junit-4.13.jar;./$jar" "./TestFlushLeft.java"
-    java -cp "./hamcrest-core-1.3.jar;./junit-4.13.jar;./build;./$jar" org.junit.runner.JUnitCore text.TestFlushLeft
+    javac -d "./bin/" -cp "./lib/hamcrest-core-1.3.jar;./lib/junit-4.13.jar;./lib/$jar" "./src/text/TestFlushLeft.java"
+    java -cp "./lib/hamcrest-core-1.3.jar;./lib/junit-4.13.jar;./bin/;./lib/$jar" org.junit.runner.JUnitCore text.TestFlushLeft
     printf "\n"
 done
+read
