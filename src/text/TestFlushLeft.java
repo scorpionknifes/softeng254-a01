@@ -1,13 +1,11 @@
-package text;  // DO NOT CHANGE THIS OR YOU WILL GET ZERO
+package text; // DO NOT CHANGE THIS OR YOU WILL GET ZERO
 
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
-
 
 /**
  * SOFTENG 254 2020 Assignment 1 submission
@@ -19,10 +17,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     // Your tests here.
     @Test(expected = IllegalArgumentException.class)
-	public void TestNullInput() {
+    public void TestNullInput() {
         try {
-            Formatter.flushLeftText(null,10);
-        } catch(IllegalArgumentException iae) {
+            Formatter.flushLeftText(null, 10);
+        } catch (IllegalArgumentException iae) {
             assertEquals("Invalid text (null)", iae.getMessage());
             throw iae;
         }
@@ -30,10 +28,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     @Test(expected = IllegalArgumentException.class)
-	public void TestNegativeLineWidthInput() {
+    public void TestNegativeLineWidthInput() {
         try {
-            Formatter.flushLeftText("example",-1);
-        } catch(IllegalArgumentException iae) {
+            Formatter.flushLeftText("example", -1);
+        } catch (IllegalArgumentException iae) {
             assertEquals("Constraints cannot be satisfied", iae.getMessage());
             throw iae;
         }
@@ -41,10 +39,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     @Test(expected = IllegalArgumentException.class)
-	public void TestZeroLineWidthInput() {
+    public void TestZeroLineWidthInput() {
         try {
             Formatter.flushLeftText("example", 0);
-        } catch(IllegalArgumentException iae) {
+        } catch (IllegalArgumentException iae) {
             assertEquals("Constraints cannot be satisfied", iae.getMessage());
             throw iae;
         }
@@ -53,10 +51,13 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     @Test
     public void TestEmptyInput() {
-        List<String> result = new ArrayList<>();
-        System.out.println("test");
-        System.out.println(result.toString());
-        assertEquals("", Formatter.flushLeftText("", 10).toString());
+        assertEquals("[]", Formatter.flushLeftText("", 10).toString());
+    }
+
+    @Test
+    public void TestGeneralInput() {
+        String result = Formatter.flushLeftText("12345678901234567890", 10).toString();
+        System.out.println(result);
     }
 
 }
