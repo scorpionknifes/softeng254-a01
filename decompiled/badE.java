@@ -48,11 +48,9 @@ public class Formatter {
         for (int i = 0; i < input.length(); i++) {
             char currentChar = input.charAt(i);
             if (Character.isWhitespace(currentChar)) {
-                if (currentChar == '\n') {
-                    sep = '\n';
-                } else if (sep == '\000') {
-                    sep = ' ';
-                }
+                //DIFFERENT
+                sep = ' ';
+                //DIFFERENT
             } else {
                 if (sep != '\000') {
                     normalisedInput = normalisedInput + sep;

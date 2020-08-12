@@ -107,7 +107,9 @@ public class Formatter {
                 break;
             }
             if (currentChar == '-') {
-                candidateSplitPos = split;
+                //DIFFERENT
+                candidateSplitPos = split - 1;
+                //DIFFERENT
                 break;
             }
         }

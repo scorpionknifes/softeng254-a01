@@ -76,12 +76,10 @@ public class Formatter {
                     throw new IllegalArgumentException("Constraints cannot be satisfied");
                 }
             } else if (word.length() > 2) {
-                if (word.matches("-+")) {
-                    for (char hyphen : word.toCharArray())
-                        result.add(hyphen + "");
-                } else {
+                //DIFFERENT
+                if (!word.matches("-+"))
                     throw new IllegalArgumentException("Constraints cannot be satisfied");
-                }
+                //DIFFERENT
             } else {
                 result.add(word);
             }

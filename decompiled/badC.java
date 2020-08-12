@@ -47,19 +47,9 @@ public class Formatter {
         char sep = Character.MIN_VALUE;
         for (int i = 0; i < input.length(); i++) {
             char currentChar = input.charAt(i);
-            if (Character.isWhitespace(currentChar)) {
-                if (currentChar == '\n') {
-                    sep = '\n';
-                } else if (sep == '\000') {
-                    sep = ' ';
-                }
-            } else {
-                if (sep != '\000') {
-                    normalisedInput = normalisedInput + sep;
-                    sep = Character.MIN_VALUE;
-                }
-                normalisedInput = normalisedInput + input.charAt(i);
-            }
+            //DIFFERENT
+            normalisedInput = normalisedInput + input.charAt(i);
+            //DIFFERENT
         }
         return normalisedInput;
     }

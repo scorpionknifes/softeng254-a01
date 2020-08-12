@@ -93,7 +93,9 @@ public class Formatter {
         int nextNLPos = normalisedInput.indexOf('\n', startPos);
         if (nextNLPos > 0 && nextNLPos < startPos + LINEWIDTH)
             return nextNLPos - 1;
-        if (startPos + LINEWIDTH >= normalisedInput.length())
+        //DIFFERENT
+        if (startPos + LINEWIDTH > normalisedInput.length())
+        //DIFFERENT
             return normalisedInput.length();
         int split = startPos + LINEWIDTH;
         if (Character.isWhitespace(normalisedInput.charAt(split)))

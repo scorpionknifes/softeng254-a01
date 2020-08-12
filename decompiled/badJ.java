@@ -11,12 +11,14 @@ public class Formatter {
             throw new IllegalArgumentException("Constraints cannot be satisfied");
         String normalisedInput = normaliseInput(text);
         List<String> result = new ArrayList<>();
+        //DIFFERENT
+        if (LINEWIDTH == 0)
+            throw new IllegalArgumentException("Constraints cannot be satisfied");
+        //DIFFERENT
         if (normalisedInput.length() == 0) {
             result.add("");
             return result;
         }
-        if (LINEWIDTH == 0)
-            throw new IllegalArgumentException("Constraints cannot be satisfied");
         if (LINEWIDTH == 1)
             return oneCharWords(normalisedInput);
         int currentPos = 0;

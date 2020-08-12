@@ -42,7 +42,9 @@ public class Formatter {
     }
 
     protected static String normaliseInput(String text) {
-        String input = text.trim();
+        //DIFFERENT
+        String input = text;
+        //DIFFERENT
         String normalisedInput = "";
         char sep = Character.MIN_VALUE;
         for (int i = 0; i < input.length(); i++) {

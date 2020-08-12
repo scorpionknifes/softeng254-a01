@@ -24,7 +24,9 @@ public class Formatter {
             boolean addHyphen = false;
             int lastPos = getSplitPoint(normalisedInput, LINEWIDTH, currentPos);
             if (lastPos < 0) {
-                lastPos = currentPos + LINEWIDTH - 2;
+                //DIFFERENT
+                lastPos = currentPos + LINEWIDTH - 1;
+                //DIFFERENT
                 addHyphen = true;
             }
             String candidate = null;

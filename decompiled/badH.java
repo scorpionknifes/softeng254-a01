@@ -11,10 +11,10 @@ public class Formatter {
             throw new IllegalArgumentException("Constraints cannot be satisfied");
         String normalisedInput = normaliseInput(text);
         List<String> result = new ArrayList<>();
-        if (normalisedInput.length() == 0) {
-            result.add("");
+        //DIFFERENT
+        if (normalisedInput.length() == 0)
             return result;
-        }
+        //DIFFERENT
         if (LINEWIDTH == 0)
             throw new IllegalArgumentException("Constraints cannot be satisfied");
         if (LINEWIDTH == 1)

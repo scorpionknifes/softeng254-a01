@@ -18,7 +18,9 @@ public class Formatter {
         if (LINEWIDTH == 0)
             throw new IllegalArgumentException("Constraints cannot be satisfied");
         if (LINEWIDTH == 1)
-            return oneCharWords(normalisedInput);
+        //DIFFERENT
+            ;
+        //DIFFERENT
         int currentPos = 0;
         while (currentPos < normalisedInput.length()) {
             boolean addHyphen = false;
