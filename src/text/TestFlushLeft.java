@@ -396,11 +396,11 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     // ================================================================================
-    // Multiple Line Width
+    // Words less than Line Width
     // ================================================================================
 
     /**
-     * Test that an empty input would format to [""]
+     * Test that an empty input would format to [""] with multiple lines
      */
     @Test
     public void TestEmptyInput() {
@@ -415,13 +415,141 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     @Test
     public void TestShortInput() {
         List<String> expected = new ArrayList<String>();
-        expected.add("sample");
-        assertEquals(expected, Formatter.flushLeftText("sample", 10));
+        expected.add("12345");
+        assertEquals(expected, Formatter.flushLeftText("12345", 10));
     }
 
     /**
-     * Test that a long input that is longer than linewidth does go to new word with
-     * hyphen by formatter
+     * Test that a newline front of short input does not effect output
+     */
+    @Test
+    public void TestNewLineFrontShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12345");
+        assertEquals(expected, Formatter.flushLeftText("\n12345", 10));
+    }
+
+    /**
+     * Test that a space front of short input does not effect output
+     */
+    @Test
+    public void TestSpaceFrontShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12345");
+        assertEquals(expected, Formatter.flushLeftText(" 12345", 10));
+    }
+
+    /**
+     * Test that a tab front of short input does not effect output
+     */
+    @Test
+    public void TestTabFrontShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12345");
+        assertEquals(expected, Formatter.flushLeftText("\t12345", 10));
+    }
+
+    /**
+     * Test that a newline middle of short input makes a newline in input
+     */
+    @Test
+    public void TestNewLineMiddleShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12");
+        expected.add("45");
+        assertEquals(expected, Formatter.flushLeftText("12\n45", 10));
+    }
+
+    /**
+     * Test that a space middle of short input does not make a newline
+     */
+    @Test
+    public void TestSpaceMiddleShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12 45");
+        assertEquals(expected, Formatter.flushLeftText("12 45", 10));
+    }
+
+    /**
+     * Test that a tab middle of short input is considered as a single space
+     */
+    @Test
+    public void TestTabMiddleShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12 45");
+        assertEquals(expected, Formatter.flushLeftText("12\t45", 10));
+    }
+
+    /**
+     * Test that a multiple newline middle of short input makes a newline in input
+     */
+    @Test
+    public void TestMultipleNewLineMiddleShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12");
+        expected.add("45");
+        assertEquals(expected, Formatter.flushLeftText("12\n\n45", 10));
+    }
+
+    /**
+     * Test that a multiple space middle of short input is considered as one space
+     */
+    @Test
+    public void TestMultipleSpaceMiddleShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12 45");
+        assertEquals(expected, Formatter.flushLeftText("12  45", 10));
+    }
+
+    /**
+     * Test that a multiple tab middle of short input is considered as a single
+     * space
+     */
+    @Test
+    public void TestMultipleTabMiddleShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12 45");
+        assertEquals(expected, Formatter.flushLeftText("12\t\t45", 10));
+    }
+
+    /**
+     * Test that a newline back of short input does not effect output
+     */
+    @Test
+    public void TestNewLineBackShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12345");
+        assertEquals(expected, Formatter.flushLeftText("12345\n", 10));
+    }
+
+    /**
+     * Test that a space front of short input does not effect output
+     */
+    @Test
+    public void TestSpaceBackShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12345");
+        assertEquals(expected, Formatter.flushLeftText("12345 ", 10));
+    }
+
+    /**
+     * Test that a tab front of short input does not effect output
+     */
+    @Test
+    public void TestTabBackShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12345");
+        assertEquals(expected, Formatter.flushLeftText("12345\t", 10));
+    }
+
+
+    // ================================================================================
+    // Words longer than Line Width
+    // ================================================================================
+
+    /**
+     * Test that a long input that is longer than linewidth does go to new word and
+     * adds a hyphen
      */
     @Test
     public void TestExtraLongInput() {
@@ -459,42 +587,6 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that words with multiple space infront is removed/trimmed when
-     * formatting
-     */
-    @Test
-    public void TestSpacesFrontInput() {
-        List<String> actual = Formatter.flushLeftText("    1234567890", 10);
-        List<String> expected = new ArrayList<String>();
-        expected.add("1234567890");
-        assertEquals(expected, actual);
-    }
-
-    /**
-     * Test that words with multiple space behind is removed/trimmed when formatting
-     */
-    @Test
-    public void TestSpacesBehindInput() {
-        List<String> actual = Formatter.flushLeftText("1234567890     ", 10);
-        List<String> expected = new ArrayList<String>();
-        expected.add("1234567890");
-        assertEquals(expected, actual);
-    }
-
-    /**
-     * Test that words with multiple space in the middle is replaced with a single
-     * space when formatting
-     */
-    @Test
-    public void TestSpacesMiddleInput() {
-        List<String> actual = Formatter.flushLeftText("12345    67890", 10);
-        List<String> expected = new ArrayList<String>();
-        expected.add("12345");
-        expected.add("67890");
-        assertEquals(expected, actual);
-    }
-
-    /**
      * Test that if the hyphen already exist at the correct location, another hyphen
      * is not added.
      */
@@ -504,36 +596,6 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
         List<String> expected = new ArrayList<String>();
         expected.add("123456789-");
         expected.add("01234");
-        assertEquals(expected, actual);
-    }
-
-    /**
-     * Test that new lines is also equal to a newline in the formatter
-     */
-    @Test
-    public void TestNewLinesInput() {
-        List<String> actual = Formatter.flushLeftText("\n1\n2\n3\n4\n5\n6\n", 10);
-        List<String> expected = new ArrayList<String>();
-        expected.add("1");
-        expected.add("2");
-        expected.add("3");
-        expected.add("4");
-        expected.add("5");
-        expected.add("6");
-        assertEquals(expected, actual);
-    }
-
-    /**
-     * Test that double newlines are considered as a single newline in the
-     * formatter.
-     */
-    @Test
-    public void TestDoubleNewLinesInput() {
-        List<String> actual = Formatter.flushLeftText("1\n\n2\n\n3", 10);
-        List<String> expected = new ArrayList<String>();
-        expected.add("1");
-        expected.add("2");
-        expected.add("3");
         assertEquals(expected, actual);
     }
 }
