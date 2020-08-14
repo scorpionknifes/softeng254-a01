@@ -463,6 +463,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that an empty input would format to [""] with multiple lines
+     * 
+     * Test that an empty input regards less of different line width would still
+     * format to [""]
      */
     @Test
     public void TestEmptyInput() {
@@ -473,6 +476,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a short input that is less than linewidth does not change format
+     * 
+     * Test this with linewidth longer than one
      */
     @Test
     public void TestShortInput() {
@@ -483,6 +488,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a newline front of short input does not effect output
+     * 
+     * Test this with linewidth longer than one
      */
     @Test
     public void TestNewLineFrontShortInput() {
@@ -493,6 +500,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a space front of short input does not effect output
+     * 
+     * Test this with linewidth longer than one
      */
     @Test
     public void TestSpaceFrontShortInput() {
@@ -503,6 +512,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a tab front of short input does not effect output
+     * 
+     * Test this with linewidth longer than one
      */
     @Test
     public void TestTabFrontShortInput() {
@@ -513,6 +524,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a multiple newline front of short input does not effect output
+     * 
+     * Test that consecutive newlines is consider the same as a single newline
      */
     @Test
     public void TestMultipleNewLineFrontShortInput() {
@@ -523,6 +536,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a multiple space front of short input does not effect output
+     * 
+     * Test that consecutive spaces is consider the same as one space
      */
     @Test
     public void TestMultipleSpaceFrontShortInput() {
@@ -533,6 +548,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a multiple tab front of short input does not effect output
+     * 
+     * Test that consective tabs is consider the same as one space
      */
     @Test
     public void TestMultipleTabFrontShortInput() {
@@ -543,6 +560,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a newline middle of short input makes a newline in input
+     * 
+     * Test that words on two different lines would format to two different lines
+     * and not to a single line
      */
     @Test
     public void TestNewLineMiddleShortInput() {
@@ -554,6 +574,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a space middle of short input does not make a newline
+     * 
+     * Test that two words that is less than the linewidth will not format to two
+     * different lines as both words can fit on the same line
      */
     @Test
     public void TestSpaceMiddleShortInput() {
@@ -564,6 +587,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a tab middle of short input is considered as a single space
+     * 
+     * Test that tabs can be considered as spaces and would act the same as
+     * in @TestSpaceMiddleShortInput
      */
     @Test
     public void TestTabMiddleShortInput() {
@@ -574,6 +600,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a multiple newline middle of short input makes a newline in input
+     * 
+     * Test that multiple newlines are considered as one single newline and would
+     * act the same as in @TestNewLineMiddleShortInput
      */
     @Test
     public void TestMultipleNewLineMiddleShortInput() {
@@ -585,6 +614,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a multiple space middle of short input is considered as one space
+     * 
+     * Test that multiple spaces are considered as one space and would act the same
+     * as in @TestSpaceMiddleShortInput
      */
     @Test
     public void TestMultipleSpaceMiddleShortInput() {
@@ -596,6 +628,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test that a multiple tab middle of short input is considered as a single
      * space
+     * 
+     * Test that tab are consider as spaces and multiple spaces are considered as a
+     * single space. It would act the same as in @TestSpaceMiddleShortInput
      */
     @Test
     public void TestMultipleTabMiddleShortInput() {
@@ -607,6 +642,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test that a tab, space and newline middle of short input is considered as a
      * single space
+     * 
+     * Test that tabs are consider as spaces, test that newlines creates newline.
+     * Test if a mixture of tab, space and newline still works.
      */
     @Test
     public void TestTabSpaceNewLineMiddleShortInput() {
@@ -617,7 +655,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a newline back of short input does not effect output
+     * Test that a newline back of short input does not effect output.
+     * 
+     * Test that a newline at the end of the input does not create an empty line
+     * after formatting
      */
     @Test
     public void TestNewLineBackShortInput() {
@@ -627,7 +668,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a space front of short input does not effect output
+     * Test that a space back of short input does not effect output
+     * 
+     * Test that a space at the end of the input does not go into the line after
+     * formatting.
      */
     @Test
     public void TestSpaceBackShortInput() {
@@ -637,7 +681,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a tab front of short input does not effect output
+     * Test that a tab back of short input does not effect output
+     * 
+     * Test that a tab is consider as a space and acts like
+     * in @TestSpaceBackShortInput
      */
     @Test
     public void TestTabBackShortInput() {
@@ -647,7 +694,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a multiple newline back of short input does not effect output
+     * Test that a multiple newline back of short input does not effect output.
+     * 
+     * Test that consecutive newlines at the end does not create any newlines at the
+     * end after formatting.
      */
     @Test
     public void TestMultipleNewLineBackShortInput() {
@@ -657,7 +707,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a multiple space front of short input does not effect output
+     * Test that a multiple space front of short input does not effect output.
+     * 
+     * Test that consecutive spaces at the end does add any spaces to the line.
      */
     @Test
     public void TestMultipleSpaceBackShortInput() {
@@ -667,7 +719,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a multiple tab front of short input does not effect output
+     * Test that a multiple tab front of short input does not effect output.
+     * 
+     * Test that tabs are considered as spaces and would act the same as
+     * in @TestMultipleSpaceBackShortInput
      */
     @Test
     public void TestMultipleTabBackShortInput() {
