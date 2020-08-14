@@ -151,9 +151,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * IllegalArgumentException is thrown with correct message "Invalid text (null)"
      */
     @Test(expected = IllegalArgumentException.class)
-    public void TestNegativeLineWidthInput() {
+    public void TestNegativeLineWidthNullInput() {
         try {
-            Formatter.flushLeftText("example", -1);
+            Formatter.flushLeftText(null, -1);
         } catch (IllegalArgumentException iae) {
             assertEquals("Invalid text (null)", iae.getMessage());
             throw iae;
@@ -167,7 +167,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * "Constraints cannot be satisfied"
      */
     @Test(expected = IllegalArgumentException.class)
-    public void TestNegativeLineWidthNullInput() {
+    public void TestNegativeLineWidthInput() {
         try {
             Formatter.flushLeftText("", -1);
         } catch (IllegalArgumentException iae) {
@@ -307,6 +307,19 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
         List<String> expected = new ArrayList<String>();
         expected.add("1");
         expected.add("2");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Test words with multiple hyphens with single linewidth
+     */
+    @Test
+    public void TestMultipleHyphenInput() {
+        List<String> actual = Formatter.flushLeftText("---", 1);
+        List<String> expected = new ArrayList<String>();
+        expected.add("-");
+        expected.add("-");
+        expected.add("-");
         assertEquals(expected, actual);
     }
 
@@ -543,8 +556,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a tab, space and newline middle of short input is considered as a single
-     * space
+     * Test that a tab, space and newline middle of short input is considered as a
+     * single space
      */
     @Test
     public void TestTabSpaceNewLineMiddleShortInput() {
@@ -614,9 +627,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
         assertEquals(expected, Formatter.flushLeftText("12345\t\t", 10));
     }
 
-
     // ================================================================================
-    // Words longer than Line Width
+    // Inputs that are longer than Line Width
     // ================================================================================
 
     /**
@@ -647,14 +659,41 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that words made out of one letter formats correctly based on linewidth
+     * Test words that is as long as linewidth with space between, no hyphens should
+     * be added and line width is 10 or shorter
      */
     @Test
-    public void TestOneSpacesInput() {
-        List<String> actual = Formatter.flushLeftText("1 2 3 4 5 6 7 8 9 0", 10);
+    public void TestWordLengthWidthInput() {
+        List<String> actual = Formatter.flushLeftText("1234567890 1234567890", 10);
         List<String> expected = new ArrayList<String>();
-        expected.add("1 2 3 4 5");
-        expected.add("6 7 8 9 0");
+        expected.add("1234567890");
+        expected.add("1234567890");
+        assertEquals(expected, actual);
+    }
+    /**
+     * Test words that is as long as linewidth with tab between, no hyphens should
+     * be added and line width is 10 or shorter
+     */
+    @Test
+    public void TestWordLengthWidthTabInput() {
+        List<String> actual = Formatter.flushLeftText("1234567890\t1234567890", 10);
+        List<String> expected = new ArrayList<String>();
+        expected.add("1234567890");
+        expected.add("1234567890");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Test words that is shorter than linewidth but cannot be on one line - there
+     * shouldn't be any spaces at the end of each line
+     */
+    @Test
+    public void TestBackSpacesInput() {
+        List<String> actual = Formatter.flushLeftText("1234567 123456789 12345678", 10);
+        List<String> expected = new ArrayList<String>();
+        expected.add("1234567");
+        expected.add("123456789");
+        expected.add("12345678");
         assertEquals(expected, actual);
     }
 
@@ -668,6 +707,33 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
         List<String> expected = new ArrayList<String>();
         expected.add("123456789-");
         expected.add("01234");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Test words with hyphen in the middle
+     */
+    @Test
+    public void TestHyphenWordsInput() {
+        List<String> actual = Formatter.flushLeftText("1234567890-123456789", 10);
+        List<String> expected = new ArrayList<String>();
+        expected.add("123456789-");
+        expected.add("0-");
+        expected.add("123456789");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Test words with multiple different input lengths
+     */
+    @Test
+    public void TestWordsMultipleLengthInput() {
+        List<String> actual = Formatter.flushLeftText("1 23 456 7890 12345 678901 2345678", 10);
+        List<String> expected = new ArrayList<String>();
+        expected.add("1 23 456");
+        expected.add("7890 12345");
+        expected.add("678901");
+        expected.add("2345678");
         assertEquals(expected, actual);
     }
 }
