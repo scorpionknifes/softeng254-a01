@@ -19,10 +19,10 @@ import static org.junit.Assert.fail;
 public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
-     * Setup globalTimeout rule for all tests in this file.
+     * Setup global Timeout rule for all tests in this file.
      */
     @Rule
-    public Timeout globalTimeout = Timeout.seconds(5);
+    public Timeout globalTimeout = Timeout.seconds(1);
 
     // ================================================================================
     // Null, Zero Width, Negative Width
