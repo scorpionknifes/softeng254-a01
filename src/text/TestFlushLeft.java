@@ -29,8 +29,12 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     // ================================================================================
 
     /**
-     * Test a null input for text is considered illegal by the formatter and the
-     * IllegalArgumentException is thrown with correct message "Invalid text (null)"
+     * Test a null input for a text input is considered illegal by the formatter and
+     * the IllegalArgumentException is thrown with correct message "Invalid text
+     * (null)".
+     * 
+     * Test if the user input null, it should throw expection as null is not a valid
+     * input.
      */
     @Test
     public void TestNullInput() {
@@ -43,7 +47,11 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test flushLeftText for zero LineWidth returns string array with [""]
+     * Test a empty input for a linewidth of zero will returns array with a single
+     * element ""
+     * 
+     * Test if the user the input "" it returns [""] without an exception as the
+     * every line is less than zero length
      */
     @Test
     public void TestZeroWidthEmptyInput() {
@@ -53,8 +61,11 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test flushLeftText with input \n for zero LineWidth returns string array with
-     * [""]
+     * Test newline input for a linewidth of zero will returns array with a single
+     * element ""
+     * 
+     * Test if the user input newline, \n is considered as empty and should return
+     * [""] just like @TestZeroWidthEmptyInput
      */
     @Test
     public void TestZeroWidthNewLineInput() {
@@ -64,8 +75,11 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test flushLeftText with input space for zero LineWidth returns string array
-     * with [""]
+     * Test space input for a linewidth of zero will returns array with a single
+     * element ""
+     * 
+     * Test if the user input space is considered as empty and should return [""]
+     * just like @TestZeroWidthEmptyInput
      */
     @Test
     public void TestZeroWidthSpaceInput() {
@@ -75,8 +89,11 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test flushLeftText with input \t for zero LineWidth returns string array with
-     * [""]
+     * Test tab input for a linewidth of zero will returns array with a single
+     * element ""
+     * 
+     * Test if the user input tab, \t is considered as empty and should return [""]
+     * just like @TestZeroWidthEmptyInput
      */
     @Test
     public void TestZeroWidthTabInput() {
@@ -86,8 +103,11 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test flushLeftText with input \n\n for zero LineWidth returns string array
-     * with [""]
+     * Test double newline input for a linewidth of zero will returns array with a
+     * single element ""
+     * 
+     * Test if the user input double newline, \n\n is considered as empty and should
+     * return [""] just like @TestZeroWidthEmptyInput
      */
     @Test
     public void TestZeroWidthDoubleNewLineInput() {
@@ -97,8 +117,11 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test flushLeftText with input double space for zero LineWidth returns string
-     * array with [""]
+     * Test double space input for a linewidth of zero will returns array with a
+     * single element ""
+     * 
+     * Test if the user input double space, " " is considered as empty and should
+     * return [""] just like @TestZeroWidthEmptyInput
      */
     @Test
     public void TestZeroWidthDoubleSpaceInput() {
@@ -108,8 +131,11 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test flushLeftText with input \t\t for zero LineWidth returns string array
-     * with [""]
+     * Test double tab input for a linewidth of zero will returns array with a
+     * single element ""
+     * 
+     * Test if the user input double tab, \t\t is considered as empty and should
+     * return [""] just like @TestZeroWidthEmptyInput
      */
     @Test
     public void TestZeroWidthDoubleTabInput() {
@@ -119,8 +145,12 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test flushLeftText with input \t, \n and space for zero LineWidth returns
-     * string array with [""]
+     * Test tab and newline input for a linewidth of zero will returns array with a
+     * single element ""
+     * 
+     * Test if the user input tab and newline, \n\t is considered as empty and
+     * should return [""] just like @TestZeroWidthEmptyInput. The formatter should
+     * not return more inputs
      */
     @Test
     public void TestZeroWidthTripleEmptyInput() {
@@ -133,6 +163,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a zero linewidth and none empty text input is considered illegal by
      * the formatter and the IllegalArgumentException is thrown with correct message
      * "Constraints cannot be satisfied"
+     * 
+     * Test if the user input a word that is longer than zero linewidth so an
+     * exception should be thrown. Adding a hyphen will make the line length longer
+     * than zero so an exception is thrown
      */
     @Test
     public void TestZeroWidthInput() {
@@ -147,6 +181,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test that a negative linewidth is considered illegal by the formatter and the
      * IllegalArgumentException is thrown with correct message "Invalid text (null)"
+     * 
+     * Test if the exception with message "Invalid text(null)" is thrown and not
+     * "Constraints cannot be satisfied" as text is null
      */
     @Test
     public void TestNegativeLineWidthNullInput() {
@@ -159,9 +196,13 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a negative linewidth and empty input is still considered illegal by
-     * the formatter and the IllegalArgumentException is thrown with correct message
-     * "Constraints cannot be satisfied"
+     * Test that a negative linewidth and non-empty input is still considered
+     * illegal by the formatter and the IllegalArgumentException is thrown with
+     * correct message "Constraints cannot be satisfied"
+     * 
+     * Test if the exception with message "Constraints cannot be satisfied" is
+     * thrown as a negative line width is a constraint that cannot be satisfied by
+     * formatter. This exception should be thrown even if the input text is empty.
      */
     @Test
     public void TestNegativeLineWidthInput() {
@@ -171,22 +212,6 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
         } catch (IllegalArgumentException iae) {
             assertEquals("Constraints cannot be satisfied", iae.getMessage());
         }
-    }
-
-    /**
-     * Test that a negative linewidth and null input is still considered illegal by
-     * the formatter and the IllegalArgumentException is thrown with correct message
-     * "Constraints cannot be satisfied"
-     */
-    @Test
-    public void TestNegativeLineWidthEmptyInput() {
-        try {
-            Formatter.flushLeftText("", -1);
-            fail("Constraints cannot be satisfied exception did not throw!");
-        } catch (IllegalArgumentException iae) {
-            assertEquals("Constraints cannot be satisfied", iae.getMessage());
-        }
-
     }
 
     // ================================================================================
@@ -663,6 +688,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
         expected.add("1234567890");
         assertEquals(expected, actual);
     }
+
     /**
      * Test words that is as long as linewidth with tab between, no hyphens should
      * be added and line width is 10 or shorter
