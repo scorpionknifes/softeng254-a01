@@ -32,15 +32,14 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test a null input for text is considered illegal by the formatter and the
      * IllegalArgumentException is thrown with correct message "Invalid text (null)"
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void TestNullInput() {
         try {
             Formatter.flushLeftText(null, 10);
+            fail("Invalid text (null) exception did not throw!");
         } catch (IllegalArgumentException iae) {
             assertEquals("Invalid text (null)", iae.getMessage());
-            throw iae;
         }
-        fail("Invalid text (null) exception did not throw!");
     }
 
     /**
@@ -135,30 +134,28 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * the formatter and the IllegalArgumentException is thrown with correct message
      * "Constraints cannot be satisfied"
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void TestZeroWidthInput() {
         try {
             Formatter.flushLeftText("1", 0);
+            fail("Constraints cannot be satisfied exception did not throw!");
         } catch (IllegalArgumentException iae) {
             assertEquals("Constraints cannot be satisfied", iae.getMessage());
-            throw iae;
         }
-        fail("Constraints cannot be satisfied exception did not throw!");
     }
 
     /**
      * Test that a negative linewidth is considered illegal by the formatter and the
      * IllegalArgumentException is thrown with correct message "Invalid text (null)"
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void TestNegativeLineWidthNullInput() {
         try {
             Formatter.flushLeftText(null, -1);
+            fail("Invalid text (null) exception did not throw!");
         } catch (IllegalArgumentException iae) {
             assertEquals("Invalid text (null)", iae.getMessage());
-            throw iae;
         }
-        fail("Invalid text (null) exception did not throw!");
     }
 
     /**
@@ -166,15 +163,14 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * the formatter and the IllegalArgumentException is thrown with correct message
      * "Constraints cannot be satisfied"
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void TestNegativeLineWidthInput() {
         try {
             Formatter.flushLeftText("", -1);
+            fail("Constraints cannot be satisfied exception did not throw!");
         } catch (IllegalArgumentException iae) {
             assertEquals("Constraints cannot be satisfied", iae.getMessage());
-            throw iae;
         }
-        fail("Constraints cannot be satisfied exception did not throw!");
     }
 
     /**
@@ -182,15 +178,15 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * the formatter and the IllegalArgumentException is thrown with correct message
      * "Constraints cannot be satisfied"
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void TestNegativeLineWidthEmptyInput() {
         try {
             Formatter.flushLeftText("", -1);
+            fail("Constraints cannot be satisfied exception did not throw!");
         } catch (IllegalArgumentException iae) {
             assertEquals("Constraints cannot be satisfied", iae.getMessage());
-            throw iae;
         }
-        fail("Constraints cannot be satisfied exception did not throw!");
+
     }
 
     // ================================================================================
@@ -328,15 +324,14 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * linewidth is 1 and the IllegalArgumentException is thrown with correct
      * message "Constraints cannot be satisfied"
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void TestSingleWidthThrowInput() {
         try {
             Formatter.flushLeftText("12", 1);
+            fail("Constraints cannot be satisfied exception did not throw!");
         } catch (IllegalArgumentException iae) {
             assertEquals("Constraints cannot be satisfied", iae.getMessage());
-            throw iae;
         }
-        fail("Constraints cannot be satisfied exception did not throw!");
     }
 
     /**
@@ -369,30 +364,28 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a hyphen at the back of a letter is consider illegal as - is not
      * another word
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void TestSingleHyphenBackInput() {
         try {
             Formatter.flushLeftText("1-", 1);
+            fail("Constraints cannot be satisfied exception did not throw!");
         } catch (IllegalArgumentException iae) {
             assertEquals("Constraints cannot be satisfied", iae.getMessage());
-            throw iae;
         }
-        fail("Constraints cannot be satisfied exception did not throw!");
     }
 
     /**
      * Test that a hyphen at the middle of a word is consider illegal as the hyphen
      * in the middle does not make it into 3 words
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void TestSingleHyphenMiddleInput() {
         try {
             Formatter.flushLeftText("1-2", 1);
+            fail("Constraints cannot be satisfied exception did not throw!");
         } catch (IllegalArgumentException iae) {
             assertEquals("Constraints cannot be satisfied", iae.getMessage());
-            throw iae;
         }
-        fail("Constraints cannot be satisfied exception did not throw!");
     }
 
     /**
