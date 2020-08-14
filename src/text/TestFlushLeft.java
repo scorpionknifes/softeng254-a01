@@ -738,6 +738,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test that a long input that is longer than linewidth does go to new word and
      * adds a hyphen
+     * 
+     * Test that a word wraps with a hyphen without any letters lost.
      */
     @Test
     public void TestExtraLongInput() {
@@ -752,6 +754,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test that a long input that has a length of linewidth does not add hyphen at
      * the end if there is no other words at the end.
+     * 
+     * Test that if the last line perfectly ends at the linewidth does not add an
+     * extra hyphen.
      */
     @Test
     public void TestLongInput() {
@@ -765,6 +770,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test words that is as long as linewidth with space between, no hyphens should
      * be added and line width is 10 or shorter
+     * 
+     * If the words are exactly the length of the linewidth no hyphen would be added
      */
     @Test
     public void TestWordLengthWidthInput() {
@@ -778,6 +785,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test words that is as long as linewidth with tab between, no hyphens should
      * be added and line width is 10 or shorter
+     * 
+     * Test that tabs are considered as spaces and acts as
+     * in @TestWordLengthWidthInput
      */
     @Test
     public void TestWordLengthWidthTabInput() {
@@ -790,7 +800,14 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test words that is shorter than linewidth but cannot be on one line - there
-     * shouldn't be any spaces at the end of each line
+     * shouldn't be any spaces at the end of each line.
+     * 
+     * Test that if the length of the current line is less than linewidth and the
+     * next word does not fit in the current line the word is formatted on the next
+     * line.
+     * 
+     * Test that no spaces would be added at the end of a line even if the length is
+     * not equal to linewidth.
      */
     @Test
     public void TestBackSpacesInput() {
@@ -805,6 +822,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test that if the hyphen already exist at the correct location, another hyphen
      * is not added.
+     * 
+     * Test that if the hyphen is exactly at the place which a hyphen should be
+     * added to wrap the word to the next line. No hyphen should be added as a
+     * hyphen already exist.
      */
     @Test
     public void TestHyphenNewLineInput() {
@@ -816,7 +837,11 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test words with hyphen in the middle
+     * Test words with hyphen in the middle.
+     * 
+     * Test special case where the first hyphen is added by wrapping. The hyphen is
+     * considered as a separater and would allow the next word to be able to move to
+     * the next line.
      */
     @Test
     public void TestHyphenWordsInput() {
@@ -830,6 +855,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test words with multiple different input lengths
+     * 
+     * Testing that words shorter than the line length and can be fit together would
+     * be placed in the same line.
      */
     @Test
     public void TestWordsMultipleLengthInput() {
