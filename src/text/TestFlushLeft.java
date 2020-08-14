@@ -488,7 +488,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
         List<String> expected = new ArrayList<String>();
         expected.add("12");
         expected.add("45");
-        assertEquals(expected, Formatter.flushLeftText("12\n\n45", 10));
+        assertEquals(expected, Formatter.flushLeftText("12\n\n\n45", 10));
     }
 
     /**
@@ -498,7 +498,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     public void TestMultipleSpaceMiddleShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12 45");
-        assertEquals(expected, Formatter.flushLeftText("12  45", 10));
+        assertEquals(expected, Formatter.flushLeftText("12   45", 10));
     }
 
     /**
@@ -509,7 +509,19 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     public void TestMultipleTabMiddleShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12 45");
-        assertEquals(expected, Formatter.flushLeftText("12\t\t45", 10));
+        assertEquals(expected, Formatter.flushLeftText("12\t\t\t45", 10));
+    }
+
+    /**
+     * Test that a tab, space and newline middle of short input is considered as a single
+     * space
+     */
+    @Test
+    public void TestTabSpaceNewLineMiddleShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12");
+        expected.add("45");
+        assertEquals(expected, Formatter.flushLeftText("12\t\n  \t45", 10));
     }
 
     /**
