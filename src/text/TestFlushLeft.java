@@ -24,6 +24,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     @Rule
     public Timeout globalTimeout = Timeout.seconds(5);
 
+    // ================================================================================
+    // Null, Zero Width, Negative Width
+    // ================================================================================
+
     /**
      * Test a null input for text is considered illegal by the formatter and the
      * IllegalArgumentException is thrown with correct message "Invalid text (null)"
@@ -57,7 +61,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     @Test(expected = IllegalArgumentException.class)
     public void TestZeroLineWidthInput() {
         try {
-            Formatter.flushLeftText("example", 0);
+            Formatter.flushLeftText("1", 0);
         } catch (IllegalArgumentException iae) {
             assertEquals("Constraints cannot be satisfied", iae.getMessage());
             throw iae;
@@ -81,6 +85,89 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
         fail("Constraints cannot be satisfied exception did not throw!");
     }
 
+    // ================================================================================
+    // Single Width
+    // ================================================================================
+
+    /**
+     * Test one linewidth with a single letter input
+     */
+    @Test
+    public void TestSingleLetterInput() {
+        List<String> actual = Formatter.flushLeftText("1", 1);
+        List<String> expected = new ArrayList<String>();
+        expected.add("1");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Test one linewidth with input with a \n in the front
+     */
+    @Test
+    public void TestSingleNewLineFrontInput() {
+        List<String> actual = Formatter.flushLeftText("\n1", 1);
+        List<String> expected = new ArrayList<String>();
+        expected.add("1");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Test one linewidth with input with a \n in the back
+     */
+    @Test
+    public void TestSingleNewLineBackInput() {
+        List<String> actual = Formatter.flushLeftText("1\n", 1);
+        List<String> expected = new ArrayList<String>();
+        expected.add("1");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Test one linewidth with input with a \n in the middle
+     */
+    @Test
+    public void TestSingleNewLineMiddleInput() {
+        List<String> actual = Formatter.flushLeftText("1\n2", 1);
+        List<String> expected = new ArrayList<String>();
+        expected.add("1");
+        expected.add("2");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Test one linewidth with input with a space in the front
+     */
+    @Test
+    public void TestSingleSpaceFrontInput() {
+        List<String> actual = Formatter.flushLeftText(" 1", 1);
+        List<String> expected = new ArrayList<String>();
+        expected.add("1");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Test one linewidth with input with a space in the back
+     */
+    @Test
+    public void TestSingleSpaceBackInput() {
+        List<String> actual = Formatter.flushLeftText("1 ", 1);
+        List<String> expected = new ArrayList<String>();
+        expected.add("1");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Test that a one linewidth would work with words that has a length of one.
+     */
+    @Test
+    public void TestSingleWidthTwoLineInput() {
+        List<String> actual = Formatter.flushLeftText("1 2", 1);
+        List<String> expected = new ArrayList<String>();
+        expected.add("1");
+        expected.add("2");
+        assertEquals(expected, actual);
+    }
+
     /**
      * Test that words with 2 letter are consider illegal by the formatter when
      * linewidth is 1 and the IllegalArgumentException is thrown with correct
@@ -89,7 +176,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     @Test(expected = IllegalArgumentException.class)
     public void TestSingleWidthThrowInput() {
         try {
-            Formatter.flushLeftText("12 34", 1);
+            Formatter.flushLeftText("12", 1);
         } catch (IllegalArgumentException iae) {
             assertEquals("Constraints cannot be satisfied", iae.getMessage());
             throw iae;
@@ -98,41 +185,15 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a one linewidth would work with words that has a length of one.
+     * Test that words that are one letter and with a hyphen infront of them when
+     * the linewidth is one works
      */
     @Test
-    public void TestSingleWidthTwoLineInput() {
+    public void TestSingleHyphenLetterInput() {
+        List<String> actual = Formatter.flushLeftText("-1", 1);
         List<String> expected = new ArrayList<String>();
-        expected.add("0");
+        expected.add("-");
         expected.add("1");
-        assertEquals(expected, Formatter.flushLeftText("0 1", 1));
-    }
-
-    /**
-     * Test that a newline separater makes the words into different elements in an
-     * array.
-     */
-    @Test
-    public void TestSingleMultipleLineInput() {
-        List<String> actual = Formatter.flushLeftText("\n1\n2\n3", 1);
-        List<String> expected = new ArrayList<String>();
-        expected.add("1");
-        expected.add("2");
-        expected.add("3");
-        assertEquals(expected, actual);
-    }
-
-    /**
-     * Test that spaces infront and behind the words are removed when the linewidth
-     * is 1.
-     */
-    @Test
-    public void TestSingleMultipleSpaceInput() {
-        List<String> actual = Formatter.flushLeftText(" 1 2 3 ", 1);
-        List<String> expected = new ArrayList<String>();
-        expected.add("1");
-        expected.add("2");
-        expected.add("3");
         assertEquals(expected, actual);
     }
 
@@ -141,30 +202,45 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * the linewidth is one works
      */
     @Test
-    public void TestSingleHyphenLetterInput() {
-        List<String> actual = Formatter.flushLeftText("-1 -2 -3", 1);
+    public void TestSingleHyphenSpaceLetterInput() {
+        List<String> actual = Formatter.flushLeftText("- 1", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("-");
         expected.add("1");
-        expected.add("-");
-        expected.add("2");
-        expected.add("-");
-        expected.add("3");
         assertEquals(expected, actual);
     }
 
     /**
+     * Test that a hyphen at the back of a letter is consider illegal as - is not
+     * another word
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void TestSingleHyphenBackInput() {
+        try {
+            Formatter.flushLeftText("1-", 1);
+        } catch (IllegalArgumentException iae) {
+            assertEquals("Constraints cannot be satisfied", iae.getMessage());
+            throw iae;
+        }
+        fail("Constraints cannot be satisfied exception did not throw!");
+    }
+
+    /**
      * Test that words made up of multiple hyphens format to each hyphen is a word
+     * without add more hyphens
      */
     @Test
     public void TestSingleMultipleHyphenInput() {
-        List<String> actual = Formatter.flushLeftText("---", 1);
+        List<String> actual = Formatter.flushLeftText("--", 1);
         List<String> expected = new ArrayList<String>();
-        expected.add("-");
         expected.add("-");
         expected.add("-");
         assertEquals(expected, actual);
     }
+
+    // ================================================================================
+    // Multiple Line Width
+    // ================================================================================
 
     /**
      * Test that an empty input would format to [""]
@@ -291,7 +367,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that double newlines are considered as a single newline in the formatter.
+     * Test that double newlines are considered as a single newline in the
+     * formatter.
      */
     @Test
     public void TestDoubleNewLinesInput() {
