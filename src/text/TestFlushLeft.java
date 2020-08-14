@@ -47,10 +47,87 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test flushLeftText for zero LineWidth returns string array with [""]
      */
     @Test
-    public void TestZeroWidthInput() {
+    public void TestZeroWidthEmptyInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("");
         assertEquals(expected, Formatter.flushLeftText("", 0));
+    }
+
+    /**
+     * Test flushLeftText with input \n for zero LineWidth returns string array with
+     * [""]
+     */
+    @Test
+    public void TestZeroWidthNewLineInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("");
+        assertEquals(expected, Formatter.flushLeftText("\n", 0));
+    }
+
+    /**
+     * Test flushLeftText with input space for zero LineWidth returns string array
+     * with [""]
+     */
+    @Test
+    public void TestZeroWidthSpaceInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("");
+        assertEquals(expected, Formatter.flushLeftText(" ", 0));
+    }
+
+    /**
+     * Test flushLeftText with input \t for zero LineWidth returns string array with
+     * [""]
+     */
+    @Test
+    public void TestZeroWidthTabInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("");
+        assertEquals(expected, Formatter.flushLeftText("\t", 0));
+    }
+
+    /**
+     * Test flushLeftText with input \n\n for zero LineWidth returns string array
+     * with [""]
+     */
+    @Test
+    public void TestZeroWidthDoubleNewLineInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("");
+        assertEquals(expected, Formatter.flushLeftText("\n\n", 0));
+    }
+
+    /**
+     * Test flushLeftText with input double space for zero LineWidth returns string
+     * array with [""]
+     */
+    @Test
+    public void TestZeroWidthDoubleSpaceInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("");
+        assertEquals(expected, Formatter.flushLeftText("  ", 0));
+    }
+
+    /**
+     * Test flushLeftText with input \t\t for zero LineWidth returns string array
+     * with [""]
+     */
+    @Test
+    public void TestZeroWidthDoubleTabInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("");
+        assertEquals(expected, Formatter.flushLeftText("\t\t", 0));
+    }
+
+    /**
+     * Test flushLeftText with input \t, \n and space for zero LineWidth returns
+     * string array with [""]
+     */
+    @Test
+    public void TestZeroWidthTripleEmptyInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("");
+        assertEquals(expected, Formatter.flushLeftText("\n\t ", 0));
     }
 
     /**
@@ -59,7 +136,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * "Constraints cannot be satisfied"
      */
     @Test(expected = IllegalArgumentException.class)
-    public void TestZeroLineWidthInput() {
+    public void TestZeroWidthInput() {
         try {
             Formatter.flushLeftText("1", 0);
         } catch (IllegalArgumentException iae) {
@@ -71,13 +148,44 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a negative linewidth is considered illegal by the formatter and the
-     * IllegalArgumentException is thrown with correct message "Constraints cannot
-     * be satisfied"
+     * IllegalArgumentException is thrown with correct message "Invalid text (null)"
      */
     @Test(expected = IllegalArgumentException.class)
     public void TestNegativeLineWidthInput() {
         try {
             Formatter.flushLeftText("example", -1);
+        } catch (IllegalArgumentException iae) {
+            assertEquals("Invalid text (null)", iae.getMessage());
+            throw iae;
+        }
+        fail("Invalid text (null) exception did not throw!");
+    }
+
+    /**
+     * Test that a negative linewidth and empty input is still considered illegal by
+     * the formatter and the IllegalArgumentException is thrown with correct message
+     * "Constraints cannot be satisfied"
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void TestNegativeLineWidthNullInput() {
+        try {
+            Formatter.flushLeftText("", -1);
+        } catch (IllegalArgumentException iae) {
+            assertEquals("Constraints cannot be satisfied", iae.getMessage());
+            throw iae;
+        }
+        fail("Constraints cannot be satisfied exception did not throw!");
+    }
+
+    /**
+     * Test that a negative linewidth and null input is still considered illegal by
+     * the formatter and the IllegalArgumentException is thrown with correct message
+     * "Constraints cannot be satisfied"
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void TestNegativeLineWidthEmptyInput() {
+        try {
+            Formatter.flushLeftText("", -1);
         } catch (IllegalArgumentException iae) {
             assertEquals("Constraints cannot be satisfied", iae.getMessage());
             throw iae;
@@ -160,8 +268,42 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a one linewidth would work with words that has a length of one.
      */
     @Test
-    public void TestSingleWidthTwoLineInput() {
+    public void TestSingleSpaceMiddleInput() {
         List<String> actual = Formatter.flushLeftText("1 2", 1);
+        List<String> expected = new ArrayList<String>();
+        expected.add("1");
+        expected.add("2");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Test one linewidth with input with a tab in the front
+     */
+    @Test
+    public void TestSingleTabFrontInput() {
+        List<String> actual = Formatter.flushLeftText("\t1", 1);
+        List<String> expected = new ArrayList<String>();
+        expected.add("1");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Test one linewidth with input with a tab in the back
+     */
+    @Test
+    public void TestSingleTabBackInput() {
+        List<String> actual = Formatter.flushLeftText("1\t", 1);
+        List<String> expected = new ArrayList<String>();
+        expected.add("1");
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Test that a one linewidth would work with words that has a length of one.
+     */
+    @Test
+    public void TestSingleTabMiddleInput() {
+        List<String> actual = Formatter.flushLeftText("1\t2", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("1");
         expected.add("2");
@@ -218,6 +360,21 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     public void TestSingleHyphenBackInput() {
         try {
             Formatter.flushLeftText("1-", 1);
+        } catch (IllegalArgumentException iae) {
+            assertEquals("Constraints cannot be satisfied", iae.getMessage());
+            throw iae;
+        }
+        fail("Constraints cannot be satisfied exception did not throw!");
+    }
+
+    /**
+     * Test that a hyphen at the middle of a word is consider illegal as the hyphen
+     * in the middle does not make it into 3 words
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void TestSingleHyphenMiddleInput() {
+        try {
+            Formatter.flushLeftText("1-2", 1);
         } catch (IllegalArgumentException iae) {
             assertEquals("Constraints cannot be satisfied", iae.getMessage());
             throw iae;
