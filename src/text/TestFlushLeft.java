@@ -450,6 +450,36 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
+     * Test that a multiple newline front of short input does not effect output
+     */
+    @Test
+    public void TestMultipleNewLineFrontShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12345");
+        assertEquals(expected, Formatter.flushLeftText("\n\n12345", 10));
+    }
+
+    /**
+     * Test that a multiple space front of short input does not effect output
+     */
+    @Test
+    public void TestMultipleSpaceFrontShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12345");
+        assertEquals(expected, Formatter.flushLeftText("  12345", 10));
+    }
+
+    /**
+     * Test that a multiple tab front of short input does not effect output
+     */
+    @Test
+    public void TestMultipleTabFrontShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12345");
+        assertEquals(expected, Formatter.flushLeftText("\t\t12345", 10));
+    }
+
+    /**
      * Test that a newline middle of short input makes a newline in input
      */
     @Test
@@ -552,6 +582,36 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
         List<String> expected = new ArrayList<String>();
         expected.add("12345");
         assertEquals(expected, Formatter.flushLeftText("12345\t", 10));
+    }
+
+    /**
+     * Test that a multiple newline back of short input does not effect output
+     */
+    @Test
+    public void TestMultipleNewLineBackShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12345");
+        assertEquals(expected, Formatter.flushLeftText("12345\n\n", 10));
+    }
+
+    /**
+     * Test that a multiple space front of short input does not effect output
+     */
+    @Test
+    public void TestMultipleSpaceBackShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12345");
+        assertEquals(expected, Formatter.flushLeftText("12345  ", 10));
+    }
+
+    /**
+     * Test that a multiple tab front of short input does not effect output
+     */
+    @Test
+    public void TestMultipleTabBackShortInput() {
+        List<String> expected = new ArrayList<String>();
+        expected.add("12345");
+        assertEquals(expected, Formatter.flushLeftText("12345\t\t", 10));
     }
 
 
