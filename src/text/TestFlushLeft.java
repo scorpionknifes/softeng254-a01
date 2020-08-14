@@ -219,7 +219,11 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     // ================================================================================
 
     /**
-     * Test one linewidth with a single letter input
+     * Test that a single letter with a single line width formats to an array with a
+     * single element with the letter
+     * 
+     * Test the general case where constraints where line width is one and line has
+     * a length of 1.
      */
     @Test
     public void TestSingleLetterInput() {
@@ -230,7 +234,11 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test one linewidth with input with a \n in the front
+     * Test one linewidth with input with a \n in the front formats to an array with
+     * a single element with the letter.
+     * 
+     * Test if a empty word would be added infront of the letter element and no
+     * exception is thrown.
      */
     @Test
     public void TestSingleNewLineFrontInput() {
@@ -241,7 +249,11 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test one linewidth with input with a \n in the back
+     * Test one linewidth with input with a \n in the back formats to an array with
+     * a single element with the letter.
+     * 
+     * Test if a empty word would be added behind of the letter element and no
+     * exception is thrown.
      */
     @Test
     public void TestSingleNewLineBackInput() {
@@ -252,7 +264,11 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test one linewidth with input with a \n in the middle
+     * Test one linewidth with input with a \n in the middle creates a split array
+     * with both sides in different elements in the array
+     * 
+     * This test that \n is splits into two lines/elements in array and not in the
+     * same element
      */
     @Test
     public void TestSingleNewLineMiddleInput() {
@@ -264,7 +280,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test one linewidth with input with a space in the front
+     * Test one linewidth with input with a space in the front formats to an array
+     * with a single element with the letter without the space.
+     * 
+     * Spaces infront of the letter is removed and not considered part of the word.
      */
     @Test
     public void TestSingleSpaceFrontInput() {
@@ -275,7 +294,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test one linewidth with input with a space in the back
+     * Test one linewidth with input with a space in the back formats to an array
+     * with a single element with the letter without the space.
+     * 
+     * Spaces behind of the letter is removed and not considered part of the word.
      */
     @Test
     public void TestSingleSpaceBackInput() {
@@ -286,7 +308,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a one linewidth would work with words that has a length of one.
+     * Test that a one linewidth would work with letters separated by space that has
+     * a length of one formats to an array with each element is one letter.
+     * 
+     * The linewidth is one so each letter should be on a new line.
      */
     @Test
     public void TestSingleSpaceMiddleInput() {
@@ -298,7 +323,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test one linewidth with input with a tab in the front
+     * Test one linewidth with a input with a tab in the front. \t are consider as
+     * spaces and should perform like @TestSingleSpaceFrontInput
      */
     @Test
     public void TestSingleTabFrontInput() {
@@ -309,7 +335,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test one linewidth with input with a tab in the back
+     * Test one linewidth with a input with a tab in the back. \t are consider as
+     * spaces and should perform like @TestSingleSpaceBackInput
      */
     @Test
     public void TestSingleTabBackInput() {
@@ -320,7 +347,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a one linewidth would work with words that has a length of one.
+     * Test that a one linewidth would work with letters separated by tab that has a
+     * length of one formats to an array with each element is one letter.
+     * 
+     * The linewidth is one so each letter should be on a new line.
      */
     @Test
     public void TestSingleTabMiddleInput() {
@@ -332,7 +362,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test words with multiple hyphens with single linewidth
+     * Test words made up of multiple hyphens with single linewidth. Each hyphen
+     * should be formatted to the next line as each line length should be one.
      */
     @Test
     public void TestMultipleHyphenInput() {
@@ -360,8 +391,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that words that are one letter and with a hyphen infront of them when
-     * the linewidth is one works
+     * Test that a hyphen allows the word to goto the next line. The line width is
+     * one so the hyphen should be the first line and the 2nd line the letter
      */
     @Test
     public void TestSingleHyphenLetterInput() {
@@ -373,8 +404,12 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that words that are one letter and with a hyphen infront of them when
-     * the linewidth is one works
+     * Test that a hyphen allows the word to goto the next line. The line width is
+     * one so the hyphen should be the first line and the 2nd line the letter.
+     * 
+     * This test is to test if the hyphen as a single word would be considered as
+     * not as word and be removed. This test also test if the hyphen remains when
+     * formatting
      */
     @Test
     public void TestSingleHyphenSpaceLetterInput() {
@@ -386,8 +421,12 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a hyphen at the back of a letter is consider illegal as - is not
-     * another word
+     * Test that a hyphen at the back of a letter is consider illegal with the
+     * exception "Constraints cannot be satisfied"
+     * 
+     * Test if the letter followed by a hyphen is consider as a single word and
+     * since the word is longer than one an exception is thrown as the linewidth is
+     * one
      */
     @Test
     public void TestSingleHyphenBackInput() {
@@ -401,7 +440,12 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a hyphen at the middle of a word is consider illegal as the hyphen
-     * in the middle does not make it into 3 words
+     * in the middle does not make it into 3 words. throw exception "Constraints
+     * cannot be satisfied"
+     * 
+     * Hyphens does not make it into three words. Since the condition
+     * in @TestSingleHyphenBackInput applies in "1-" and will not become single
+     * letter lines.
      */
     @Test
     public void TestSingleHyphenMiddleInput() {
@@ -411,19 +455,6 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
         } catch (IllegalArgumentException iae) {
             assertEquals("Constraints cannot be satisfied", iae.getMessage());
         }
-    }
-
-    /**
-     * Test that words made up of multiple hyphens format to each hyphen is a word
-     * without add more hyphens
-     */
-    @Test
-    public void TestSingleMultipleHyphenInput() {
-        List<String> actual = Formatter.flushLeftText("--", 1);
-        List<String> expected = new ArrayList<String>();
-        expected.add("-");
-        expected.add("-");
-        assertEquals(expected, actual);
     }
 
     // ================================================================================
