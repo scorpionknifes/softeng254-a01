@@ -11,7 +11,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 /**
- * SOFTENG 254 2020 Assignment 1 submission
+ * SOFTENG 254 2020 Assignment 1 submission.
+ * 
+ * Check Java Doc for Formatter for Constraints and definitions. Constraints 1
+ * and 2 is satisfied by each case by asserting the actual output with the
+ * expected output with every character and characters adjacent to each other.
  *
  * Author: (Cheng-Zhen Yang, cyan562)
  **/
@@ -51,7 +55,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * element ""
      * 
      * Test if the user the input "" it returns [""] without an exception as the
-     * every line is less than zero length
+     * every line is less than zero length. Test if constraint 4 is satisfied when
+     * linewidth is zero.
      */
     @Test
     public void testZeroWidthEmptyInput() {
@@ -65,7 +70,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * element ""
      * 
      * Test if the user input newline, \n is considered as empty and should return
-     * [""] just like @TestZeroWidthEmptyInput
+     * [""] just like @testZeroWidthEmptyInput. Test if constraint 9 is satisfied
+     * when linewidth is zero.
      */
     @Test
     public void testZeroWidthNewLineInput() {
@@ -79,7 +85,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * element ""
      * 
      * Test if the user input space is considered as empty and should return [""]
-     * just like @TestZeroWidthEmptyInput
+     * just like @testZeroWidthEmptyInput. Test if constraint 5 is satisfied when
+     * linewidth is zero.
      */
     @Test
     public void testZeroWidthSpaceInput() {
@@ -92,8 +99,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test tab input for a linewidth of zero will returns array with a single
      * element ""
      * 
-     * Test if the user input tab, \t is considered as empty and should return [""]
-     * just like @TestZeroWidthEmptyInput
+     * Test if the user input tab, \t is considered as non printable and should
+     * return [""] just like @testZeroWidthEmptyInput. Test if constraint 6 is
+     * satisfied.
      */
     @Test
     public void testZeroWidthTabInput() {
@@ -107,7 +115,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * single element ""
      * 
      * Test if the user input double newline, \n\n is considered as empty and should
-     * return [""] just like @TestZeroWidthEmptyInput
+     * return [""] just like @testZeroWidthEmptyInput. Test if constraint 9 is
+     * satisfied when linewidth is zero.
      */
     @Test
     public void testZeroWidthDoubleNewLineInput() {
@@ -120,8 +129,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test double space input for a linewidth of zero will returns array with a
      * single element ""
      * 
-     * Test if the user input double space, " " is considered as empty and should
-     * return [""] just like @TestZeroWidthEmptyInput
+     * Test if the user input double space, " " is considered as non printable
+     * whitespace and should return [""] just like @testZeroWidthEmptyInput. Test if
+     * constraint 5 and 7 is satisfied when linewidth is zero.
      */
     @Test
     public void testZeroWidthDoubleSpaceInput() {
@@ -134,8 +144,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test double tab input for a linewidth of zero will returns array with a
      * single element ""
      * 
-     * Test if the user input double tab, \t\t is considered as empty and should
-     * return [""] just like @TestZeroWidthEmptyInput
+     * Test if the user input double tab, \t\t is considered as non printable just
+     * like space and should return [""] just like @testZeroWidthEmptyInput. Test if
+     * constraint 6 is satisfied.
      */
     @Test
     public void testZeroWidthDoubleTabInput() {
@@ -148,9 +159,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test tab and newline input for a linewidth of zero will returns array with a
      * single element ""
      * 
-     * Test if the user input tab and newline, \n\t is considered as empty and
-     * should return [""] just like @TestZeroWidthEmptyInput. The formatter should
-     * not return more inputs
+     * Test if the user input consecutive tab and newline, "\n\t " every non
+     * printable is considered by the formatter and should return [""] just
+     * like @testZeroWidthEmptyInput. The formatter should not return more inputs.
+     * Test if constraint 6 is satisfied.
      */
     @Test
     public void testZeroWidthTripleEmptyInput() {
@@ -166,7 +178,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * 
      * Test if the user input a word that is longer than zero linewidth so an
      * exception should be thrown. Adding a hyphen will make the line length longer
-     * than zero so an exception is thrown
+     * than zero so an exception is thrown. Test if constraint 8 and 4 is satisfied
+     * when linewidth is zero.
      */
     @Test
     public void testZeroWidthInput() {
@@ -183,7 +196,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * IllegalArgumentException is thrown with correct message "Invalid text (null)"
      * 
      * Test if the exception with message "Invalid text(null)" is thrown and not
-     * "Constraints cannot be satisfied" as text is null
+     * "Constraints cannot be satisfied" as text is null. Text null is not a
+     * constraint that can be satisfied so a different message should be thrown.
      */
     @Test
     public void testNegativeLineWidthNullInput() {
@@ -203,6 +217,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test if the exception with message "Constraints cannot be satisfied" is
      * thrown as a negative line width is a constraint that cannot be satisfied by
      * formatter. This exception should be thrown even if the input text is empty.
+     * Test if constraint 4 is satisfied.
      */
     @Test
     public void testNegativeLineWidthInput() {
@@ -223,7 +238,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * single element with the letter
      * 
      * Test the general case where constraints where line width is one and line has
-     * a length of 1.
+     * a length of 1. Test if constraint 4 is satisfied.
      */
     @Test
     public void testSingleLetterInput() {
@@ -238,7 +253,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * a single element with the letter.
      * 
      * Test if a empty word would be added infront of the letter element and no
-     * exception is thrown.
+     * exception is thrown. Test if constraint 9 is satisfied.
      */
     @Test
     public void testSingleNewLineFrontInput() {
@@ -253,7 +268,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * a single element with the letter.
      * 
      * Test if a empty word would be added behind of the letter element and no
-     * exception is thrown.
+     * exception is thrown. Test if constraint 9 is satisfied.
      */
     @Test
     public void testSingleNewLineBackInput() {
@@ -268,7 +283,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * with both sides in different elements in the array
      * 
      * This test that \n is splits into two lines/elements in array and not in the
-     * same element
+     * same element. Test if constraint 9 is satisfied.
      */
     @Test
     public void testSingleNewLineMiddleInput() {
@@ -284,6 +299,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * with a single element with the letter without the space.
      * 
      * Spaces infront of the letter is removed and not considered part of the word.
+     * Test if constraint 5 is satisfied.
      */
     @Test
     public void testSingleSpaceFrontInput() {
@@ -298,6 +314,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * with a single element with the letter without the space.
      * 
      * Spaces behind of the letter is removed and not considered part of the word.
+     * Test if constraint 5 is satisfied.
      */
     @Test
     public void testSingleSpaceBackInput() {
@@ -311,7 +328,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a one linewidth would work with letters separated by space that has
      * a length of one formats to an array with each element is one letter.
      * 
-     * The linewidth is one so each letter should be on a new line.
+     * The linewidth is one so each letter should be on a new line. Test if
+     * constraint 4 is satisfied with linewidth of one.
      */
     @Test
     public void testSingleSpaceMiddleInput() {
@@ -324,7 +342,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test one linewidth with a input with a tab in the front. \t are consider as
-     * spaces and should perform like @TestSingleSpaceFrontInput
+     * spaces and should perform like @testSingleSpaceFrontInput.
+     * 
+     * Test if constraint 6 is satisfied.
      */
     @Test
     public void testSingleTabFrontInput() {
@@ -336,7 +356,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test one linewidth with a input with a tab in the back. \t are consider as
-     * spaces and should perform like @TestSingleSpaceBackInput
+     * spaces and should perform like @testSingleSpaceBackInput.
+     * 
+     * Test if constraint 6 is satisfied.
      */
     @Test
     public void testSingleTabBackInput() {
@@ -350,7 +372,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a one linewidth would work with letters separated by tab that has a
      * length of one formats to an array with each element is one letter.
      * 
-     * The linewidth is one so each letter should be on a new line.
+     * The linewidth is one so each letter should be on a new line and should
+     * perform like @testSingleSpaceMiddleInput.
      */
     @Test
     public void testSingleTabMiddleInput() {
@@ -364,6 +387,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test words made up of multiple hyphens with single linewidth. Each hyphen
      * should be formatted to the next line as each line length should be one.
+     * 
+     * Test if constraint 8 and 4 is satisfied with linewidth of one.
      */
     @Test
     public void testMultipleHyphenInput() {
@@ -378,7 +403,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test that words with 2 letter are consider illegal by the formatter when
      * linewidth is 1 and the IllegalArgumentException is thrown with correct
-     * message "Constraints cannot be satisfied"
+     * message "Constraints cannot be satisfied".
+     * 
+     * Test when constraint 4 is not satisfied with linewidth of one an exception is
+     * thrown.
      */
     @Test
     public void testSingleWidthThrowInput() {
@@ -392,7 +420,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
 
     /**
      * Test that a hyphen allows the word to goto the next line. The line width is
-     * one so the hyphen should be the first line and the 2nd line the letter
+     * one so the hyphen should be the first line and the 2nd line the letter.
+     * 
+     * Test if constraint 8 is satisfied with linewidth of one.
      */
     @Test
     public void testSingleHyphenLetterInput() {
@@ -409,7 +439,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * 
      * This test is to test if the hyphen as a single word would be considered as
      * not as word and be removed. This test also test if the hyphen remains when
-     * formatting
+     * formatting. Test if constraint 8 is satisfied if there is a word with only a
+     * single hyphen.
      */
     @Test
     public void testSingleHyphenSpaceLetterInput() {
@@ -426,7 +457,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * 
      * Test if the letter followed by a hyphen is consider as a single word and
      * since the word is longer than one an exception is thrown as the linewidth is
-     * one
+     * one. Test if constraint 4 and 8 cannot be satisfied in this case with
+     * linewidth of one.
      */
     @Test
     public void testSingleHyphenBackInput() {
@@ -444,8 +476,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * cannot be satisfied"
      * 
      * Hyphens does not make it into three words. Since the condition
-     * in @TestSingleHyphenBackInput applies in "1-" and will not become single
-     * letter lines.
+     * in @testSingleHyphenBackInput applies in "1-" and will not become single
+     * letter lines. Test if constraint 9 is satisfied in this case with linewidth
+     * of one.
      */
     @Test
     public void testSingleHyphenMiddleInput() {
@@ -465,7 +498,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that an empty input would format to [""] with multiple lines
      * 
      * Test that an empty input regards less of different line width would still
-     * format to [""]
+     * format to [""].
      */
     @Test
     public void testEmptyInput() {
@@ -477,7 +510,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test that a short input that is less than linewidth does not change format
      * 
-     * Test this with linewidth longer than one
+     * Test this with linewidth longer than one. Test if constraint 1 and 2 is
+     * satisfied.
      */
     @Test
     public void testShortInput() {
@@ -487,9 +521,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a newline front of short input does not effect output
+     * Test that a newline front of short input does not effect output.
      * 
-     * Test this with linewidth longer than one
+     * Test this with linewidth longer than one. Test if constraint 9 is satisfied.
      */
     @Test
     public void testNewLineFrontShortInput() {
@@ -499,9 +533,9 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a space front of short input does not effect output
+     * Test that a space front of short input does not effect output.
      * 
-     * Test this with linewidth longer than one
+     * Test this with linewidth longer than one. Test if constraint 5 is satisfied.
      */
     @Test
     public void testSpaceFrontShortInput() {
@@ -511,9 +545,10 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     }
 
     /**
-     * Test that a tab front of short input does not effect output
+     * Test that a tab front of short input does not effect output.
      * 
-     * Test this with linewidth longer than one
+     * Test tabs are consider the same as one non printable separater and should act
+     * like @testSpaceFrontShortInput. Test if constraint 6 is satisfied.
      */
     @Test
     public void testTabFrontShortInput() {
@@ -525,7 +560,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test that a multiple newline front of short input does not effect output
      * 
-     * Test that consecutive newlines is consider the same as a single newline
+     * Test that consecutive newlines is consider the same as a single newline. Test
+     * if contraint 9 is satisfied.
      */
     @Test
     public void testMultipleNewLineFrontShortInput() {
@@ -537,7 +573,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test that a multiple space front of short input does not effect output
      * 
-     * Test that consecutive spaces is consider the same as one space
+     * Test that consecutive spaces is consider the same as one space. Test if
+     * constraint 7 is satisfied.
      */
     @Test
     public void testMultipleSpaceFrontShortInput() {
@@ -549,7 +586,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test that a multiple tab front of short input does not effect output
      * 
-     * Test that consective tabs is consider the same as one space
+     * Test that consective tabs is consider the same as one non printable separater
+     * e.g. space. Test if constraint 6 is satisfied.
      */
     @Test
     public void testMultipleTabFrontShortInput() {
@@ -562,7 +600,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a newline middle of short input makes a newline in input
      * 
      * Test that words on two different lines would format to two different lines
-     * and not to a single line
+     * and not to a single line. Test if constraint 9 is satisfied.
      */
     @Test
     public void testNewLineMiddleShortInput() {
@@ -576,7 +614,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a space middle of short input does not make a newline
      * 
      * Test that two words that is less than the linewidth will not format to two
-     * different lines as both words can fit on the same line
+     * different lines as both words can fit on the same line. Test if constraint 3
+     * is satisfied.
      */
     @Test
     public void testSpaceMiddleShortInput() {
@@ -589,7 +628,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a tab middle of short input is considered as a single space
      * 
      * Test that tabs can be considered as spaces and would act the same as
-     * in @TestSpaceMiddleShortInput
+     * in @testSpaceMiddleShortInput. Test if constraint 6 is satisfied.
      */
     @Test
     public void testTabMiddleShortInput() {
@@ -602,7 +641,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a multiple newline middle of short input makes a newline in input
      * 
      * Test that multiple newlines are considered as one single newline and would
-     * act the same as in @TestNewLineMiddleShortInput
+     * act the same as in @testNewLineMiddleShortInput. Test if constraint 9 is
+     * satisfied.
      */
     @Test
     public void testMultipleNewLineMiddleShortInput() {
@@ -616,7 +656,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a multiple space middle of short input is considered as one space
      * 
      * Test that multiple spaces are considered as one space and would act the same
-     * as in @TestSpaceMiddleShortInput
+     * as in @testSpaceMiddleShortInput. Test if constraint 3 is satisfied.
      */
     @Test
     public void testMultipleSpaceMiddleShortInput() {
@@ -630,7 +670,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * space
      * 
      * Test that tab are consider as spaces and multiple spaces are considered as a
-     * single space. It would act the same as in @TestSpaceMiddleShortInput
+     * single space. It would act the same as in @testSpaceMiddleShortInput. Test if
+     * constraint 6 is satisfied.
      */
     @Test
     public void testMultipleTabMiddleShortInput() {
@@ -658,7 +699,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a newline back of short input does not effect output.
      * 
      * Test that a newline at the end of the input does not create an empty line
-     * after formatting
+     * after formatting. Test if constraint 9 is satisfied.
      */
     @Test
     public void testNewLineBackShortInput() {
@@ -671,7 +712,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a space back of short input does not effect output
      * 
      * Test that a space at the end of the input does not go into the line after
-     * formatting.
+     * formatting. Test if constraint 5 is satisfied.
      */
     @Test
     public void testSpaceBackShortInput() {
@@ -684,7 +725,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a tab back of short input does not effect output
      * 
      * Test that a tab is consider as a space and acts like
-     * in @TestSpaceBackShortInput
+     * in @testSpaceBackShortInput. Test if constraint 6 is satisfied.
      */
     @Test
     public void testTabBackShortInput() {
@@ -697,7 +738,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a multiple newline back of short input does not effect output.
      * 
      * Test that consecutive newlines at the end does not create any newlines at the
-     * end after formatting.
+     * end after formatting. Test if constraint 9 is satisfied.
      */
     @Test
     public void testMultipleNewLineBackShortInput() {
@@ -709,7 +750,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
     /**
      * Test that a multiple space front of short input does not effect output.
      * 
-     * Test that consecutive spaces at the end does add any spaces to the line.
+     * Test that consecutive spaces at the end does add any spaces to the line. Test
+     * if constraint 3 is satisfied.
      */
     @Test
     public void testMultipleSpaceBackShortInput() {
@@ -722,7 +764,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a multiple tab front of short input does not effect output.
      * 
      * Test that tabs are considered as spaces and would act the same as
-     * in @TestMultipleSpaceBackShortInput
+     * in @testMultipleSpaceBackShortInput. Test if constraint 6 is satisfied.
      */
     @Test
     public void testMultipleTabBackShortInput() {
@@ -739,7 +781,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a long input that is longer than linewidth does go to new word and
      * adds a hyphen
      * 
-     * Test that a word wraps with a hyphen without any letters lost.
+     * Test that a word wraps with a hyphen without any letters lost. Test if
+     * constraint 8 and 4 is satisfied.
      */
     @Test
     public void testExtraLongInput() {
@@ -756,7 +799,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * the end if there is no other words at the end.
      * 
      * Test that if the last line perfectly ends at the linewidth does not add an
-     * extra hyphen.
+     * extra hyphen. Test if constraint 8 and 4 is satisfied in this case.
      */
     @Test
     public void testLongInput() {
@@ -771,7 +814,8 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test words that is as long as linewidth with space between, no hyphens should
      * be added and line width is 10 or shorter
      * 
-     * If the words are exactly the length of the linewidth no hyphen would be added
+     * If the words are exactly the length of the linewidth no hyphen would be
+     * added. Test if constraint 4 is satisfied.
      */
     @Test
     public void testWordLengthWidthInput() {
@@ -787,7 +831,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * be added and line width is 10 or shorter
      * 
      * Test that tabs are considered as spaces and acts as
-     * in @TestWordLengthWidthInput
+     * in @testWordLengthWidthInput. Test if constraint 6 is satisfied.
      */
     @Test
     public void testWordLengthWidthTabInput() {
@@ -807,7 +851,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * line.
      * 
      * Test that no spaces would be added at the end of a line even if the length is
-     * not equal to linewidth.
+     * not equal to linewidth. Test if constraint 4 and 5 is satisfied.
      */
     @Test
     public void testBackSpacesInput() {
@@ -825,7 +869,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * 
      * Test that if the hyphen is exactly at the place which a hyphen should be
      * added to wrap the word to the next line. No hyphen should be added as a
-     * hyphen already exist.
+     * hyphen already exist. Test if constraint 8 is satisfied.
      */
     @Test
     public void testHyphenNewLineInput() {
@@ -841,7 +885,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * 
      * Test special case where the first hyphen is added by wrapping. The hyphen is
      * considered as a separater and would allow the next word to be able to move to
-     * the next line.
+     * the next line. Test if constraint 8 and 4 is satisfied in this case.
      */
     @Test
     public void testHyphenWordsInput() {
@@ -857,7 +901,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test words with multiple different input lengths
      * 
      * Testing that words shorter than the line length and can be fit together would
-     * be placed in the same line.
+     * be placed in the same line. Test if constraint 6 and 3 is satisfied.
      */
     @Test
     public void testWordsMultipleLengthInput() {
