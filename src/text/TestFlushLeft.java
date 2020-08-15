@@ -37,7 +37,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * input.
      */
     @Test
-    public void TestNullInput() {
+    public void testNullInput() {
         try {
             Formatter.flushLeftText(null, 10);
             fail("Invalid text (null) exception did not throw!");
@@ -54,7 +54,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * every line is less than zero length
      */
     @Test
-    public void TestZeroWidthEmptyInput() {
+    public void testZeroWidthEmptyInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("");
         assertEquals(expected, Formatter.flushLeftText("", 0));
@@ -68,7 +68,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * [""] just like @TestZeroWidthEmptyInput
      */
     @Test
-    public void TestZeroWidthNewLineInput() {
+    public void testZeroWidthNewLineInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("");
         assertEquals(expected, Formatter.flushLeftText("\n", 0));
@@ -82,7 +82,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * just like @TestZeroWidthEmptyInput
      */
     @Test
-    public void TestZeroWidthSpaceInput() {
+    public void testZeroWidthSpaceInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("");
         assertEquals(expected, Formatter.flushLeftText(" ", 0));
@@ -96,7 +96,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * just like @TestZeroWidthEmptyInput
      */
     @Test
-    public void TestZeroWidthTabInput() {
+    public void testZeroWidthTabInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("");
         assertEquals(expected, Formatter.flushLeftText("\t", 0));
@@ -110,7 +110,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * return [""] just like @TestZeroWidthEmptyInput
      */
     @Test
-    public void TestZeroWidthDoubleNewLineInput() {
+    public void testZeroWidthDoubleNewLineInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("");
         assertEquals(expected, Formatter.flushLeftText("\n\n", 0));
@@ -124,7 +124,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * return [""] just like @TestZeroWidthEmptyInput
      */
     @Test
-    public void TestZeroWidthDoubleSpaceInput() {
+    public void testZeroWidthDoubleSpaceInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("");
         assertEquals(expected, Formatter.flushLeftText("  ", 0));
@@ -138,7 +138,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * return [""] just like @TestZeroWidthEmptyInput
      */
     @Test
-    public void TestZeroWidthDoubleTabInput() {
+    public void testZeroWidthDoubleTabInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("");
         assertEquals(expected, Formatter.flushLeftText("\t\t", 0));
@@ -153,7 +153,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * not return more inputs
      */
     @Test
-    public void TestZeroWidthTripleEmptyInput() {
+    public void testZeroWidthTripleEmptyInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("");
         assertEquals(expected, Formatter.flushLeftText("\n\t ", 0));
@@ -169,7 +169,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * than zero so an exception is thrown
      */
     @Test
-    public void TestZeroWidthInput() {
+    public void testZeroWidthInput() {
         try {
             Formatter.flushLeftText("1", 0);
             fail("Constraints cannot be satisfied exception did not throw!");
@@ -186,7 +186,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * "Constraints cannot be satisfied" as text is null
      */
     @Test
-    public void TestNegativeLineWidthNullInput() {
+    public void testNegativeLineWidthNullInput() {
         try {
             Formatter.flushLeftText(null, -1);
             fail("Invalid text (null) exception did not throw!");
@@ -205,7 +205,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * formatter. This exception should be thrown even if the input text is empty.
      */
     @Test
-    public void TestNegativeLineWidthInput() {
+    public void testNegativeLineWidthInput() {
         try {
             Formatter.flushLeftText("", -1);
             fail("Constraints cannot be satisfied exception did not throw!");
@@ -226,7 +226,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * a length of 1.
      */
     @Test
-    public void TestSingleLetterInput() {
+    public void testSingleLetterInput() {
         List<String> actual = Formatter.flushLeftText("1", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("1");
@@ -241,7 +241,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * exception is thrown.
      */
     @Test
-    public void TestSingleNewLineFrontInput() {
+    public void testSingleNewLineFrontInput() {
         List<String> actual = Formatter.flushLeftText("\n1", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("1");
@@ -256,7 +256,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * exception is thrown.
      */
     @Test
-    public void TestSingleNewLineBackInput() {
+    public void testSingleNewLineBackInput() {
         List<String> actual = Formatter.flushLeftText("1\n", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("1");
@@ -271,7 +271,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * same element
      */
     @Test
-    public void TestSingleNewLineMiddleInput() {
+    public void testSingleNewLineMiddleInput() {
         List<String> actual = Formatter.flushLeftText("1\n2", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("1");
@@ -286,7 +286,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Spaces infront of the letter is removed and not considered part of the word.
      */
     @Test
-    public void TestSingleSpaceFrontInput() {
+    public void testSingleSpaceFrontInput() {
         List<String> actual = Formatter.flushLeftText(" 1", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("1");
@@ -300,7 +300,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Spaces behind of the letter is removed and not considered part of the word.
      */
     @Test
-    public void TestSingleSpaceBackInput() {
+    public void testSingleSpaceBackInput() {
         List<String> actual = Formatter.flushLeftText("1 ", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("1");
@@ -314,7 +314,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * The linewidth is one so each letter should be on a new line.
      */
     @Test
-    public void TestSingleSpaceMiddleInput() {
+    public void testSingleSpaceMiddleInput() {
         List<String> actual = Formatter.flushLeftText("1 2", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("1");
@@ -327,7 +327,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * spaces and should perform like @TestSingleSpaceFrontInput
      */
     @Test
-    public void TestSingleTabFrontInput() {
+    public void testSingleTabFrontInput() {
         List<String> actual = Formatter.flushLeftText("\t1", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("1");
@@ -339,7 +339,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * spaces and should perform like @TestSingleSpaceBackInput
      */
     @Test
-    public void TestSingleTabBackInput() {
+    public void testSingleTabBackInput() {
         List<String> actual = Formatter.flushLeftText("1\t", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("1");
@@ -353,7 +353,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * The linewidth is one so each letter should be on a new line.
      */
     @Test
-    public void TestSingleTabMiddleInput() {
+    public void testSingleTabMiddleInput() {
         List<String> actual = Formatter.flushLeftText("1\t2", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("1");
@@ -366,7 +366,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * should be formatted to the next line as each line length should be one.
      */
     @Test
-    public void TestMultipleHyphenInput() {
+    public void testMultipleHyphenInput() {
         List<String> actual = Formatter.flushLeftText("---", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("-");
@@ -381,7 +381,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * message "Constraints cannot be satisfied"
      */
     @Test
-    public void TestSingleWidthThrowInput() {
+    public void testSingleWidthThrowInput() {
         try {
             Formatter.flushLeftText("12", 1);
             fail("Constraints cannot be satisfied exception did not throw!");
@@ -395,7 +395,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * one so the hyphen should be the first line and the 2nd line the letter
      */
     @Test
-    public void TestSingleHyphenLetterInput() {
+    public void testSingleHyphenLetterInput() {
         List<String> actual = Formatter.flushLeftText("-1", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("-");
@@ -412,7 +412,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * formatting
      */
     @Test
-    public void TestSingleHyphenSpaceLetterInput() {
+    public void testSingleHyphenSpaceLetterInput() {
         List<String> actual = Formatter.flushLeftText("- 1", 1);
         List<String> expected = new ArrayList<String>();
         expected.add("-");
@@ -429,7 +429,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * one
      */
     @Test
-    public void TestSingleHyphenBackInput() {
+    public void testSingleHyphenBackInput() {
         try {
             Formatter.flushLeftText("1-", 1);
             fail("Constraints cannot be satisfied exception did not throw!");
@@ -448,7 +448,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * letter lines.
      */
     @Test
-    public void TestSingleHyphenMiddleInput() {
+    public void testSingleHyphenMiddleInput() {
         try {
             Formatter.flushLeftText("1-2", 1);
             fail("Constraints cannot be satisfied exception did not throw!");
@@ -468,7 +468,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * format to [""]
      */
     @Test
-    public void TestEmptyInput() {
+    public void testEmptyInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("");
         assertEquals(expected, Formatter.flushLeftText("", 10));
@@ -480,7 +480,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test this with linewidth longer than one
      */
     @Test
-    public void TestShortInput() {
+    public void testShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12345");
         assertEquals(expected, Formatter.flushLeftText("12345", 10));
@@ -492,7 +492,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test this with linewidth longer than one
      */
     @Test
-    public void TestNewLineFrontShortInput() {
+    public void testNewLineFrontShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12345");
         assertEquals(expected, Formatter.flushLeftText("\n12345", 10));
@@ -504,7 +504,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test this with linewidth longer than one
      */
     @Test
-    public void TestSpaceFrontShortInput() {
+    public void testSpaceFrontShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12345");
         assertEquals(expected, Formatter.flushLeftText(" 12345", 10));
@@ -516,7 +516,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test this with linewidth longer than one
      */
     @Test
-    public void TestTabFrontShortInput() {
+    public void testTabFrontShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12345");
         assertEquals(expected, Formatter.flushLeftText("\t12345", 10));
@@ -528,7 +528,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that consecutive newlines is consider the same as a single newline
      */
     @Test
-    public void TestMultipleNewLineFrontShortInput() {
+    public void testMultipleNewLineFrontShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12345");
         assertEquals(expected, Formatter.flushLeftText("\n\n12345", 10));
@@ -540,7 +540,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that consecutive spaces is consider the same as one space
      */
     @Test
-    public void TestMultipleSpaceFrontShortInput() {
+    public void testMultipleSpaceFrontShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12345");
         assertEquals(expected, Formatter.flushLeftText("  12345", 10));
@@ -552,7 +552,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that consective tabs is consider the same as one space
      */
     @Test
-    public void TestMultipleTabFrontShortInput() {
+    public void testMultipleTabFrontShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12345");
         assertEquals(expected, Formatter.flushLeftText("\t\t12345", 10));
@@ -565,7 +565,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * and not to a single line
      */
     @Test
-    public void TestNewLineMiddleShortInput() {
+    public void testNewLineMiddleShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12");
         expected.add("45");
@@ -579,7 +579,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * different lines as both words can fit on the same line
      */
     @Test
-    public void TestSpaceMiddleShortInput() {
+    public void testSpaceMiddleShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12 45");
         assertEquals(expected, Formatter.flushLeftText("12 45", 10));
@@ -592,7 +592,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * in @TestSpaceMiddleShortInput
      */
     @Test
-    public void TestTabMiddleShortInput() {
+    public void testTabMiddleShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12 45");
         assertEquals(expected, Formatter.flushLeftText("12\t45", 10));
@@ -605,7 +605,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * act the same as in @TestNewLineMiddleShortInput
      */
     @Test
-    public void TestMultipleNewLineMiddleShortInput() {
+    public void testMultipleNewLineMiddleShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12");
         expected.add("45");
@@ -619,7 +619,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * as in @TestSpaceMiddleShortInput
      */
     @Test
-    public void TestMultipleSpaceMiddleShortInput() {
+    public void testMultipleSpaceMiddleShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12 45");
         assertEquals(expected, Formatter.flushLeftText("12   45", 10));
@@ -633,7 +633,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * single space. It would act the same as in @TestSpaceMiddleShortInput
      */
     @Test
-    public void TestMultipleTabMiddleShortInput() {
+    public void testMultipleTabMiddleShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12 45");
         assertEquals(expected, Formatter.flushLeftText("12\t\t\t45", 10));
@@ -647,7 +647,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test if a mixture of tab, space and newline still works.
      */
     @Test
-    public void TestTabSpaceNewLineMiddleShortInput() {
+    public void testTabSpaceNewLineMiddleShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12");
         expected.add("45");
@@ -661,7 +661,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * after formatting
      */
     @Test
-    public void TestNewLineBackShortInput() {
+    public void testNewLineBackShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12345");
         assertEquals(expected, Formatter.flushLeftText("12345\n", 10));
@@ -674,7 +674,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * formatting.
      */
     @Test
-    public void TestSpaceBackShortInput() {
+    public void testSpaceBackShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12345");
         assertEquals(expected, Formatter.flushLeftText("12345 ", 10));
@@ -687,7 +687,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * in @TestSpaceBackShortInput
      */
     @Test
-    public void TestTabBackShortInput() {
+    public void testTabBackShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12345");
         assertEquals(expected, Formatter.flushLeftText("12345\t", 10));
@@ -700,7 +700,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * end after formatting.
      */
     @Test
-    public void TestMultipleNewLineBackShortInput() {
+    public void testMultipleNewLineBackShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12345");
         assertEquals(expected, Formatter.flushLeftText("12345\n\n", 10));
@@ -712,7 +712,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that consecutive spaces at the end does add any spaces to the line.
      */
     @Test
-    public void TestMultipleSpaceBackShortInput() {
+    public void testMultipleSpaceBackShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12345");
         assertEquals(expected, Formatter.flushLeftText("12345  ", 10));
@@ -725,7 +725,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * in @TestMultipleSpaceBackShortInput
      */
     @Test
-    public void TestMultipleTabBackShortInput() {
+    public void testMultipleTabBackShortInput() {
         List<String> expected = new ArrayList<String>();
         expected.add("12345");
         assertEquals(expected, Formatter.flushLeftText("12345\t\t", 10));
@@ -742,7 +742,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * Test that a word wraps with a hyphen without any letters lost.
      */
     @Test
-    public void TestExtraLongInput() {
+    public void testExtraLongInput() {
         List<String> actual = Formatter.flushLeftText("12345678901234567890", 10);
         List<String> expected = new ArrayList<String>();
         expected.add("123456789-");
@@ -759,7 +759,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * extra hyphen.
      */
     @Test
-    public void TestLongInput() {
+    public void testLongInput() {
         List<String> actual = Formatter.flushLeftText("1234567890123456789", 10);
         List<String> expected = new ArrayList<String>();
         expected.add("123456789-");
@@ -774,7 +774,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * If the words are exactly the length of the linewidth no hyphen would be added
      */
     @Test
-    public void TestWordLengthWidthInput() {
+    public void testWordLengthWidthInput() {
         List<String> actual = Formatter.flushLeftText("1234567890 1234567890", 10);
         List<String> expected = new ArrayList<String>();
         expected.add("1234567890");
@@ -790,7 +790,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * in @TestWordLengthWidthInput
      */
     @Test
-    public void TestWordLengthWidthTabInput() {
+    public void testWordLengthWidthTabInput() {
         List<String> actual = Formatter.flushLeftText("1234567890\t1234567890", 10);
         List<String> expected = new ArrayList<String>();
         expected.add("1234567890");
@@ -810,7 +810,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * not equal to linewidth.
      */
     @Test
-    public void TestBackSpacesInput() {
+    public void testBackSpacesInput() {
         List<String> actual = Formatter.flushLeftText("1234567 123456789 12345678", 10);
         List<String> expected = new ArrayList<String>();
         expected.add("1234567");
@@ -828,7 +828,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * hyphen already exist.
      */
     @Test
-    public void TestHyphenNewLineInput() {
+    public void testHyphenNewLineInput() {
         List<String> actual = Formatter.flushLeftText("123456789-01234", 10);
         List<String> expected = new ArrayList<String>();
         expected.add("123456789-");
@@ -844,7 +844,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * the next line.
      */
     @Test
-    public void TestHyphenWordsInput() {
+    public void testHyphenWordsInput() {
         List<String> actual = Formatter.flushLeftText("1234567890-123456789", 10);
         List<String> expected = new ArrayList<String>();
         expected.add("123456789-");
@@ -860,7 +860,7 @@ public class TestFlushLeft {// DO NOT CHANGE THE CLASS NAME OR YOU WILL GET ZERO
      * be placed in the same line.
      */
     @Test
-    public void TestWordsMultipleLengthInput() {
+    public void testWordsMultipleLengthInput() {
         List<String> actual = Formatter.flushLeftText("1 23 456 7890 12345 678901 2345678", 10);
         List<String> expected = new ArrayList<String>();
         expected.add("1 23 456");
