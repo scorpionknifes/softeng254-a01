@@ -1,9 +1,11 @@
-# Softeng254-a01 Assignment 1 — Creating Tests
+# Softeng254 Assignment 1 - Creating Tests
 
 ## Overview
 The main goal of this assignment is to write tests that will detect faults in code.
 
 You are to create a test suite to test the method `text.Formatter#flushLeftText()`. Your test suite should detect all the faults in the "bad" implementations, and all tests should pass for the "good" implementation (assuming there are, in fact, no faults in that implementation!).
+
+*Tips: decompile black box jar to identify differences.*
 
 7.5/7.5
 
